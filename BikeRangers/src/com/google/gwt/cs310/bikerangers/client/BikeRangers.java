@@ -59,7 +59,7 @@ public class BikeRangers implements EntryPoint {
 		importUrlButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				//TODO backend method
-				importDataset();
+				importFromUrl();
 			}
 		});
 				
@@ -68,7 +68,7 @@ public class BikeRangers implements EntryPoint {
 			public void onKeyDown(KeyDownEvent event) {
 				if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 					//TODO backend method
-					importDataset();
+					importFromUrl();
 				}
 			}
 		});
@@ -79,7 +79,7 @@ public class BikeRangers implements EntryPoint {
 	 * Import data from entered url.  Executed when the user clicks the importUrlButton
 	 * or presses enter in the newUrlTextBox.
 	 */
-	private void importDataset() {
+	private void importFromUrl() {
 		// TODO Auto-generated method stub
 		final String url = newUrlTextBox.getText().trim();
 		newUrlTextBox.setFocus(true);
@@ -90,9 +90,8 @@ public class BikeRangers implements EntryPoint {
 			newUrlTextBox.selectAll();
 			return;
 		}
+		parseFromUrl(url);
 		newUrlTextBox.setText("");
-		
-		parseDataset(url);
 	}
 
 	
@@ -101,7 +100,7 @@ public class BikeRangers implements EntryPoint {
 	 * Google datastore.
 	 * @param url
 	 */
-	private void parseDataset(String url) {
+	private void parseFromUrl(String url) {
 		// TODO Auto-generated method stub
 		
 		// Call parser
